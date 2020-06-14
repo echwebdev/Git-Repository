@@ -18,7 +18,7 @@ namespace NNResourceServer.API.Controllers
     {
         private MedicalProfileService _medicalProfileSvc;
 
-
+        //testing git
 
         private void Init()
         {
