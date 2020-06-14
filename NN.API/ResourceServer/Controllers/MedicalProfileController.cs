@@ -18,6 +18,8 @@ namespace NNResourceServer.API.Controllers
     {
         private MedicalProfileService _medicalProfileSvc;
 
+
+
         private void Init()
         {
             BaseInit();
