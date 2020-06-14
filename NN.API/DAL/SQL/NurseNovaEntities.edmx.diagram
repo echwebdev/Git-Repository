@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="882a3925adfb4b4bbf16cbd2f5faa8eb" Name="Diagram1">
+        <EntityTypeShape EntityType="NurseNovaModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NurseNovaModel.About" Width="1.5" PointX="2.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NurseNovaModel.AppObject" Width="1.5" PointX="4.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NurseNovaModel.Article" Width="1.5" PointX="8.25" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NurseNovaModel.Article_Comment" Width="1.5" PointX="10.5" PointY="27.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NurseNovaModel.Article_Like" Width="1.5" PointX="13.5" PointY="28" IsExpanded="true" />
+        <EntityTypeShape EntityType="NurseNovaModel.Article_Share" Width="1.5" PointX="13.5" PointY="25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NurseNovaModel.AspNetRole" Width="1.5" PointX="0.75" PointY="28.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NurseNovaModel.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NurseNovaModel.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="20.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NurseNovaModel.AspNetUser" Width="1.5" PointX="3" PointY="25.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NurseNovaModel.Client" Width="1.5" PointX="8.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NurseNovaModel.Doctor" Width="1.5" PointX="10" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NurseNovaModel.DoctorSpecialty" Width="1.5" PointX="7.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="NurseNovaModel.FamilyMember" Width="1.5" PointX="5.25" PointY="23" IsExpanded="true" />
+        <EntityTypeShape EntityType="NurseNovaModel.FavoriteArticle" Width="1.5" PointX="5.25" PointY="27.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NurseNovaModel.FavoriteDoctor" Width="1.5" PointX="5.25" PointY="30.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NurseNovaModel.HealthDiary" Width="1.5" PointX="8.25" PointY="22.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NurseNovaModel.HealthDiaryAttachment" Width="1.5" PointX="10.5" PointY="22.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NurseNovaModel.HealthDiaryType" Width="1.5" PointX="6" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NurseNovaModel.Label" Width="1.5" PointX="1" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NurseNovaModel.LabelGroup" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NurseNovaModel.Language" Width="1.5" PointX="1" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NurseNovaModel.Log" Width="1.5" PointX="5" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NurseNovaModel.MedicalProfile" Width="1.5" PointX="5.25" PointY="37.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NurseNovaModel.MedicalRecord" Width="1.5" PointX="8.25" PointY="32.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NurseNovaModel.MedicalRecordAttachment" Width="1.5" PointX="10.5" PointY="32.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NurseNovaModel.MedicalRecordType" Width="1.5" PointX="6" PointY="44.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NurseNovaModel.MedicalRemiderDateTime" Width="1.5" PointX="7.5" PointY="48.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NurseNovaModel.MedicalReminder" Width="1.5" PointX="5.25" PointY="49.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NurseNovaModel.MedicalReminderAttachment" Width="1.5" PointX="7.5" PointY="52" IsExpanded="true" />
+        <EntityTypeShape EntityType="NurseNovaModel.MyVaccination" Width="1.5" PointX="5.25" PointY="55.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NurseNovaModel.RefreshToken" Width="1.5" PointX="10.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NurseNovaModel.Relationship" Width="1.5" PointX="13.75" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NurseNovaModel.SeededData" Width="1.5" PointX="4.75" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NurseNovaModel.SeededDataGroup" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="NurseNovaModel.StandardVaccination" Width="1.5" PointX="10" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="NurseNovaModel.StandardVaccinationCategory" Width="1.5" PointX="11.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NurseNovaModel.Topic" Width="1.5" PointX="6" PointY="33.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NurseNovaModel.TransactionType" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
+        <AssociationConnector Association="NurseNovaModel.FK_Article_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="NurseNovaModel.FK_Article_Comment_Article" ManuallyRouted="false" />
+        <AssociationConnector Association="NurseNovaModel.FK_Article_Like_Article" ManuallyRouted="false" />
+        <AssociationConnector Association="NurseNovaModel.FK_Article_Share_Article" ManuallyRouted="false" />
+        <AssociationConnector Association="NurseNovaModel.FK_Article_Topic" ManuallyRouted="false" />
+        <AssociationConnector Association="NurseNovaModel.FK_Article_Like_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="NurseNovaModel.FK_Article_Share_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="NurseNovaModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="NurseNovaModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="NurseNovaModel.FK_FamilyMember_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="NurseNovaModel.FK_FavoriteArticle_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="NurseNovaModel.FK_FavoriteDoctor_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="NurseNovaModel.FK_HealthDiary_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="NurseNovaModel.FK_MedicalProfile_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="NurseNovaModel.FK_MedicalRecord_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="NurseNovaModel.FK_MedicalReminder_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="NurseNovaModel.FK_MyVaccination_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="NurseNovaModel.FK_Doctor_DoctorSpecialty" ManuallyRouted="false" />
+        <AssociationConnector Association="NurseNovaModel.FK_HealthDiary_HealthDiaryType" ManuallyRouted="false" />
+        <AssociationConnector Association="NurseNovaModel.FK_HealthDiaryAttachment_HealthDiary" ManuallyRouted="false" />
+        <AssociationConnector Association="NurseNovaModel.FK_Label_LabelGroup" ManuallyRouted="false" />
+        <AssociationConnector Association="NurseNovaModel.FK_Label_Language" ManuallyRouted="false" />
+        <AssociationConnector Association="NurseNovaModel.FK_Log_TransactionType" ManuallyRouted="false" />
+        <AssociationConnector Association="NurseNovaModel.FK_MedicalRecord_MedicalRecordType" ManuallyRouted="false" />
+        <AssociationConnector Association="NurseNovaModel.FK_MedicalRecordAttachment_MedicalRecord" ManuallyRouted="false" />
+        <AssociationConnector Association="NurseNovaModel.FK_MedicalRemiderDateTime_MedicalReminder" ManuallyRouted="false" />
+        <AssociationConnector Association="NurseNovaModel.FK_MedicalReminderAttachment_MedicalReminder" ManuallyRouted="false" />
+        <AssociationConnector Association="NurseNovaModel.FK_StandardVaccination_StandardVaccinationCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="NurseNovaModel.AspNetUserRoles" ManuallyRouted="false" />
+        <AssociationConnector Association="NurseNovaModel.FK_SeededData_LabelGroup" />
+        <AssociationConnector Association="NurseNovaModel.FK_SeededData_SeededDataGroup" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

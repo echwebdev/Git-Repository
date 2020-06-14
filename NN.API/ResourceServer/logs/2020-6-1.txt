@@ -1,0 +1,19 @@
+6/1/2020 12:39:37 AM ==> 
+Could not load file or assembly 'Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed' or one of its dependencies. The located assembly's manifest definition does not match the assembly reference. (Exception from HRESULT: 0x80131040)
+
+6/1/2020 12:39:37 AM ==> 
+   at BLL.Services.AuthService.GetUserSessionByAccessToken(String accessToken)
+   at ResourceServer.Extensions.AuthAttribute.OnActionExecuting(HttpActionContext actionContext) in C:\Users\echam\Desktop\29-05-20 - Office\NN.API\ResourceServer\Extensions\APIFilters.cs:line 29
+
+6/1/2020 11:14:36 AM ==> 
+The given key was not present in the dictionary.
+
+6/1/2020 11:18:45 AM ==> 
+The given key was not present in the dictionary.
+
+6/1/2020 12:30:21 PM ==> 
+Unable to cast object of type 'DataModels.Services.Auth.GetUserSessionByAccessTokenOutput' to type 'DataModels.Core.AccessTokenModel'.
+
+6/1/2020 12:42:49 PM ==> 
+Unable to cast object of type 'DataModels.Services.Auth.GetUserSessionByAccessTokenOutput' to type 'DataModels.Core.AccessTokenModel'.
+

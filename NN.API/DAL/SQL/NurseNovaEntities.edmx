@@ -1,0 +1,2873 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="NurseNovaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="About">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateUpdated" Type="datetime" />
+          <Property Name="CreateUserID" Type="bigint" Nullable="false" />
+          <Property Name="UpdateUserID" Type="bigint" />
+        </EntityType>
+        <EntityType Name="AppObject">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="TableName" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="IsOnMenu" Type="bit" Nullable="false" />
+          <Property Name="IsSortable" Type="bit" Nullable="false" />
+          <Property Name="IsPublishable" Type="bit" Nullable="false" />
+          <Property Name="IsFilterable" Type="bit" />
+          <Property Name="PageSize" Type="int" />
+          <Property Name="Priority" Type="int" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateUpdated" Type="datetime" />
+          <Property Name="CreateUserID" Type="bigint" Nullable="false" />
+          <Property Name="UpdateUserID" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Article">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="TopicID" Type="bigint" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Img_src" Type="nvarchar" MaxLength="250" />
+          <Property Name="DatePublished" Type="datetime" />
+          <Property Name="Priority" Type="int" />
+          <Property Name="IsPublished" Type="bit" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateUpdated" Type="datetime" />
+          <Property Name="CreateUserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UpdateUserID" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="Article_Comment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ArticleID" Type="bigint" Nullable="false" />
+          <Property Name="DateOfComment" Type="datetime" />
+          <Property Name="Comment" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Priority" Type="int" />
+          <Property Name="IsPublished" Type="bigint" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateUpdate" Type="datetime" />
+          <Property Name="CreateUserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UpdateUserID" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="Article_Like">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ArticleID" Type="bigint" Nullable="false" />
+          <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="DateOfLike" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Article_Share">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ArticleID" Type="bigint" Nullable="false" />
+          <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="DateOfShare" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Level" Type="tinyint" Nullable="false" />
+          <Property Name="JoinDate" Type="datetime" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="DateOfBirth" Type="datetime" />
+          <Property Name="GenderId" Type="bigint" />
+        </EntityType>
+        <EntityType Name="Clients">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Secret" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ApplicationType" Type="int" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="RefreshTokenLifeTime" Type="int" Nullable="false" />
+          <Property Name="AllowedOrigin" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Doctor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DoctorSpecialyID" Type="bigint" Nullable="false" />
+          <Property Name="Firstname" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Lastname" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="EmailAddress" Type="nvarchar" MaxLength="500" />
+          <Property Name="Website" Type="nvarchar" MaxLength="500" />
+          <Property Name="ClinicPhone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="50" />
+          <Property Name="CountryID" Type="bigint" Nullable="false" />
+          <Property Name="CityID" Type="bigint" Nullable="false" />
+          <Property Name="Village" Type="nvarchar" MaxLength="250" />
+          <Property Name="StreetNumName" Type="nvarchar" MaxLength="150" />
+          <Property Name="StreetLine1" Type="nvarchar" MaxLength="500" />
+          <Property Name="Longitude" Type="float" />
+          <Property Name="Lattitude" Type="float" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="CreateUserID" Type="bigint" Nullable="false" />
+          <Property Name="UpdateUserID" Type="bigint" />
+        </EntityType>
+        <EntityType Name="DoctorSpecialty">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Priority" Type="int" />
+          <Property Name="IsPublished" Type="bit" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateUpdated" Type="datetime" />
+          <Property Name="CreateUserID" Type="bigint" Nullable="false" />
+          <Property Name="UpdateUserID" Type="bigint" />
+        </EntityType>
+        <EntityType Name="FamilyMember">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="RelationshipSD" Type="bigint" Nullable="false" />
+          <Property Name="GenderSD" Type="bigint" />
+          <Property Name="DateOfBirth" Type="datetime" />
+          <Property Name="BloodTypeSD" Type="bigint" />
+          <Property Name="MedicationAllergy" Type="nvarchar(max)" />
+          <Property Name="Remark" Type="nvarchar(max)" />
+          <Property Name="Priority" Type="int" />
+          <Property Name="IsPublished" Type="bit" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateUpdated" Type="datetime" />
+          <Property Name="CreateUserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UpdateUserID" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="FavoriteArticle">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ArticleID" Type="bigint" Nullable="false" />
+          <Property Name="DateOfPreference" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FavoriteDoctor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="DoctorID" Type="bigint" Nullable="false" />
+          <Property Name="DateOfPreference" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HealthDiary">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="FamilyMemberID" Type="bigint" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="HealthDiaryTypeID" Type="bigint" />
+          <Property Name="Priority" Type="int" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateUpdated" Type="datetime" />
+          <Property Name="CreateUserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UpdateUserID" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="HealthDiaryAttachment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HealthDiaryID" Type="bigint" Nullable="false" />
+          <Property Name="File_src" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="FileType" Type="nvarchar" MaxLength="50" />
+          <Property Name="Priority" Type="int" />
+          <Property Name="IsPublished" Type="bit" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateUpdated" Type="datetime" />
+        </EntityType>
+        <EntityType Name="HealthDiaryType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Priority" Type="int" />
+          <Property Name="IsPublished" Type="bit" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateUpdated" Type="datetime" />
+          <Property Name="CreateUserID" Type="bigint" Nullable="false" />
+          <Property Name="UpdateUserID" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Label">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LabelGroupID" Type="bigint" Nullable="false" />
+          <Property Name="Label" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="LanguageID" Type="bigint" />
+        </EntityType>
+        <EntityType Name="LabelGroup">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Language">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Log">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ObjectID" Type="bigint" Nullable="false" />
+          <Property Name="RecordID" Type="bigint" />
+          <Property Name="TransactionTypeID" Type="bigint" />
+          <Property Name="Metadata" Type="nvarchar" MaxLength="250" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="DateTransaction" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MedicalProfile">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="GenderSD" Type="bigint" />
+          <Property Name="MaritalStatusSD" Type="bigint" />
+          <Property Name="Age" Type="int" />
+          <Property Name="BloodTypeSD" Type="bigint" />
+          <Property Name="WeightSD" Type="bigint" />
+          <Property Name="HeightSD" Type="bigint" />
+          <Property Name="Occupation" Type="nvarchar" MaxLength="500" />
+          <Property Name="HaveInsurance" Type="bit" />
+          <Property Name="HaveNSSF" Type="bit" />
+          <Property Name="Smoker" Type="bit" />
+          <Property Name="HaveChildren" Type="bit" />
+          <Property Name="CaffeineDrinker" Type="bit" />
+          <Property Name="CaffeinePerDay" Type="nvarchar" MaxLength="250" />
+          <Property Name="TakeMedication" Type="bit" />
+          <Property Name="HavePreviousSurgeries" Type="bit" />
+          <Property Name="HaveMedicationAllergy" Type="bit" />
+          <Property Name="HaveOtherAllergy" Type="nvarchar(max)" />
+          <Property Name="FamilyMedicalHistory" Type="nvarchar(max)" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateUpdated" Type="datetime" />
+          <Property Name="CreateUserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UpdateUserID" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="MedicalRecord">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="FamilyMemberID" Type="bigint" />
+          <Property Name="MedicalRecordTypeID" Type="bigint" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Priority" Type="int" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateUpdated" Type="datetime" />
+          <Property Name="CreateUserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UpdateUserID" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="MedicalRecordAttachment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MedicalRecordID" Type="bigint" Nullable="false" />
+          <Property Name="File_src" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="FileType" Type="nvarchar" MaxLength="50" />
+          <Property Name="Priority" Type="int" />
+          <Property Name="IsPublished" Type="bit" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateUpdated" Type="datetime" />
+        </EntityType>
+        <EntityType Name="MedicalRecordType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Priority" Type="int" />
+          <Property Name="IsPublished" Type="bit" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateUpdated" Type="datetime" />
+          <Property Name="CreateUserID" Type="bigint" Nullable="false" />
+          <Property Name="UpdateUserID" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MedicalRemiderDateTime">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MedicalReminderID" Type="bigint" Nullable="false" />
+          <Property Name="RemiderDate" Type="date" />
+          <Property Name="RemiderTime" Type="time" Precision="7" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateUpdated" Type="datetime" />
+        </EntityType>
+        <EntityType Name="MedicalReminder">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="FamilyMemberID" Type="bigint" />
+          <Property Name="MedicineName" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="QtyDoze" Type="int" />
+          <Property Name="MedicineUnitID" Type="bigint" />
+          <Property Name="IsEveryday" Type="bit" Nullable="false" />
+          <Property Name="IsLifetime" Type="bit" Nullable="false" />
+          <Property Name="Priority" Type="int" />
+          <Property Name="IsPublished" Type="bit" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateUpdated" Type="datetime" />
+          <Property Name="CreateUserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UpdateUserID" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="MedicalReminderAttachment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MedicalReminderID" Type="bigint" Nullable="false" />
+          <Property Name="File_src" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="FileType" Type="nvarchar" MaxLength="50" />
+          <Property Name="Priority" Type="int" />
+          <Property Name="IsPublished" Type="bit" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateUpdated" Type="datetime" />
+        </EntityType>
+        <EntityType Name="MyVaccination">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="IsStandard" Type="bigint" Nullable="false" />
+          <Property Name="StandardVaccinationID" Type="bigint" />
+          <Property Name="VaccinationDueDate" Type="datetime" />
+          <Property Name="IsVaccinated" Type="bit" Nullable="false" />
+          <Property Name="VaccinatedDate" Type="datetime" />
+          <Property Name="Priority" Type="int" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateUpdated" Type="datetime" />
+          <Property Name="CreateUserID" Type="nvarchar" MaxLength="128" />
+          <Property Name="UpdateUserID" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="RefreshTokens">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Subject" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ClientId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IssuedUtc" Type="datetime" Nullable="false" />
+          <Property Name="ExpiresUtc" Type="datetime" Nullable="false" />
+          <Property Name="ProtectedTicket" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Relationship">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LabelGroupID" Type="bigint" Nullable="false" />
+          <Property Name="Priority" Type="int" />
+          <Property Name="IsPublished" Type="bigint" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateUpdated" Type="datetime" />
+        </EntityType>
+        <EntityType Name="SeededData">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Priority" Type="int" Nullable="false" />
+          <Property Name="SeededDataGroupID" Type="bigint" Nullable="false" />
+          <Property Name="LabelGroupID" Type="bigint" Nullable="false" />
+          <Property Name="StatusFlag" Type="bigint" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateUpdated" Type="datetime" />
+        </EntityType>
+        <EntityType Name="SeededDataGroup">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StandardVaccination">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StandardVaccinationCategoryID" Type="bigint" Nullable="false" />
+          <Property Name="LabelGroupID" Type="bigint" Nullable="false" />
+          <Property Name="VaccinationDueDate" Type="datetime" Nullable="false" />
+          <Property Name="MinAge" Type="int" />
+          <Property Name="MaxAge" Type="int" />
+          <Property Name="Priority" Type="int" />
+          <Property Name="IsPublished" Type="bigint" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateUpdated" Type="datetime" />
+          <Property Name="CreateUserID" Type="bigint" Nullable="false" />
+          <Property Name="UpdateUserID" Type="bigint" />
+        </EntityType>
+        <EntityType Name="StandardVaccinationCategory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LabeGroupID" Type="bigint" Nullable="false" />
+          <Property Name="Priority" Type="int" />
+          <Property Name="IsPublished" Type="bigint" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateUpdated" Type="datetime" />
+          <Property Name="CreateUserID" Type="bigint" Nullable="false" />
+          <Property Name="UpdateUserID" Type="bigint" />
+        </EntityType>
+        <EntityType Name="Topic">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Priority" Type="int" />
+          <Property Name="IsPublished" Type="bit" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateUpdated" Type="datetime" />
+          <Property Name="CreateUserID" Type="bigint" Nullable="false" />
+          <Property Name="UpdateUserID" Type="bigint" />
+        </EntityType>
+        <EntityType Name="TransactionType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Priority" Type="int" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateUpdated" Type="datetime" />
+          <Property Name="CreateUserID" Type="bigint" Nullable="false" />
+          <Property Name="UpdateUserID" Type="bigint" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Article_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="Article" Type="Self.Article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Article">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Article_Comment_Article">
+          <End Role="Article" Type="Self.Article" Multiplicity="1" />
+          <End Role="Article_Comment" Type="Self.Article_Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Article_Comment">
+              <PropertyRef Name="ArticleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Article_Like_Article">
+          <End Role="Article" Type="Self.Article" Multiplicity="1" />
+          <End Role="Article_Like" Type="Self.Article_Like" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Article_Like">
+              <PropertyRef Name="ArticleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Article_Like_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="Article_Like" Type="Self.Article_Like" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Article_Like">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Article_Share_Article">
+          <End Role="Article" Type="Self.Article" Multiplicity="1" />
+          <End Role="Article_Share" Type="Self.Article_Share" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Article_Share">
+              <PropertyRef Name="ArticleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Article_Share_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="Article_Share" Type="Self.Article_Share" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Article_Share">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Article_Topic">
+          <End Role="Topic" Type="Self.Topic" Multiplicity="1" />
+          <End Role="Article" Type="Self.Article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Topic">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Article">
+              <PropertyRef Name="TopicID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Doctor_DoctorSpecialty">
+          <End Role="DoctorSpecialty" Type="Self.DoctorSpecialty" Multiplicity="1" />
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DoctorSpecialty">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Doctor">
+              <PropertyRef Name="DoctorSpecialyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FamilyMember_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="FamilyMember" Type="Self.FamilyMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FamilyMember">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FavoriteArticle_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="FavoriteArticle" Type="Self.FavoriteArticle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FavoriteArticle">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FavoriteDoctor_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="FavoriteDoctor" Type="Self.FavoriteDoctor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FavoriteDoctor">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HealthDiary_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="HealthDiary" Type="Self.HealthDiary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HealthDiary">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HealthDiary_HealthDiaryType">
+          <End Role="HealthDiaryType" Type="Self.HealthDiaryType" Multiplicity="0..1" />
+          <End Role="HealthDiary" Type="Self.HealthDiary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HealthDiaryType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="HealthDiary">
+              <PropertyRef Name="HealthDiaryTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HealthDiaryAttachment_HealthDiary">
+          <End Role="HealthDiary" Type="Self.HealthDiary" Multiplicity="1" />
+          <End Role="HealthDiaryAttachment" Type="Self.HealthDiaryAttachment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HealthDiary">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="HealthDiaryAttachment">
+              <PropertyRef Name="HealthDiaryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Label_LabelGroup">
+          <End Role="LabelGroup" Type="Self.LabelGroup" Multiplicity="1" />
+          <End Role="Label" Type="Self.Label" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LabelGroup">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Label">
+              <PropertyRef Name="LabelGroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Label_Language">
+          <End Role="Language" Type="Self.Language" Multiplicity="0..1" />
+          <End Role="Label" Type="Self.Label" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Label">
+              <PropertyRef Name="LanguageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Log_TransactionType">
+          <End Role="TransactionType" Type="Self.TransactionType" Multiplicity="0..1" />
+          <End Role="Log" Type="Self.Log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TransactionType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Log">
+              <PropertyRef Name="TransactionTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MedicalProfile_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="MedicalProfile" Type="Self.MedicalProfile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MedicalProfile">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MedicalRecord_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="MedicalRecord" Type="Self.MedicalRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MedicalRecord">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MedicalRecord_MedicalRecordType">
+          <End Role="MedicalRecordType" Type="Self.MedicalRecordType" Multiplicity="0..1" />
+          <End Role="MedicalRecord" Type="Self.MedicalRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MedicalRecordType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MedicalRecord">
+              <PropertyRef Name="MedicalRecordTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MedicalRecordAttachment_MedicalRecord">
+          <End Role="MedicalRecord" Type="Self.MedicalRecord" Multiplicity="1" />
+          <End Role="MedicalRecordAttachment" Type="Self.MedicalRecordAttachment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MedicalRecord">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MedicalRecordAttachment">
+              <PropertyRef Name="MedicalRecordID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MedicalRemiderDateTime_MedicalReminder">
+          <End Role="MedicalReminder" Type="Self.MedicalReminder" Multiplicity="1" />
+          <End Role="MedicalRemiderDateTime" Type="Self.MedicalRemiderDateTime" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MedicalReminder">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MedicalRemiderDateTime">
+              <PropertyRef Name="MedicalReminderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MedicalReminder_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="MedicalReminder" Type="Self.MedicalReminder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MedicalReminder">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MedicalReminderAttachment_MedicalReminder">
+          <End Role="MedicalReminder" Type="Self.MedicalReminder" Multiplicity="1" />
+          <End Role="MedicalReminderAttachment" Type="Self.MedicalReminderAttachment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MedicalReminder">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MedicalReminderAttachment">
+              <PropertyRef Name="MedicalReminderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MyVaccination_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="MyVaccination" Type="Self.MyVaccination" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MyVaccination">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SeededData_LabelGroup">
+          <End Role="LabelGroup" Type="Self.LabelGroup" Multiplicity="1" />
+          <End Role="SeededData" Type="Self.SeededData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LabelGroup">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SeededData">
+              <PropertyRef Name="LabelGroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SeededData_SeededDataGroup">
+          <End Role="SeededDataGroup" Type="Self.SeededDataGroup" Multiplicity="1" />
+          <End Role="SeededData" Type="Self.SeededData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SeededDataGroup">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SeededData">
+              <PropertyRef Name="SeededDataGroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StandardVaccination_StandardVaccinationCategory">
+          <End Role="StandardVaccinationCategory" Type="Self.StandardVaccinationCategory" Multiplicity="1" />
+          <End Role="StandardVaccination" Type="Self.StandardVaccination" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StandardVaccinationCategory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="StandardVaccination">
+              <PropertyRef Name="StandardVaccinationCategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="NurseNovaModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="About" EntityType="Self.About" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AppObject" EntityType="Self.AppObject" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Article" EntityType="Self.Article" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Article_Comment" EntityType="Self.Article_Comment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Article_Like" EntityType="Self.Article_Like" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Article_Share" EntityType="Self.Article_Share" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Doctor" EntityType="Self.Doctor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DoctorSpecialty" EntityType="Self.DoctorSpecialty" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FamilyMember" EntityType="Self.FamilyMember" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FavoriteArticle" EntityType="Self.FavoriteArticle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FavoriteDoctor" EntityType="Self.FavoriteDoctor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HealthDiary" EntityType="Self.HealthDiary" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HealthDiaryAttachment" EntityType="Self.HealthDiaryAttachment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HealthDiaryType" EntityType="Self.HealthDiaryType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Label" EntityType="Self.Label" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LabelGroup" EntityType="Self.LabelGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Language" EntityType="Self.Language" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Log" EntityType="Self.Log" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MedicalProfile" EntityType="Self.MedicalProfile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MedicalRecord" EntityType="Self.MedicalRecord" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MedicalRecordAttachment" EntityType="Self.MedicalRecordAttachment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MedicalRecordType" EntityType="Self.MedicalRecordType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MedicalRemiderDateTime" EntityType="Self.MedicalRemiderDateTime" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MedicalReminder" EntityType="Self.MedicalReminder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MedicalReminderAttachment" EntityType="Self.MedicalReminderAttachment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MyVaccination" EntityType="Self.MyVaccination" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RefreshTokens" EntityType="Self.RefreshTokens" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Relationship" EntityType="Self.Relationship" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SeededData" EntityType="Self.SeededData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SeededDataGroup" EntityType="Self.SeededDataGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StandardVaccination" EntityType="Self.StandardVaccination" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StandardVaccinationCategory" EntityType="Self.StandardVaccinationCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Topic" EntityType="Self.Topic" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TransactionType" EntityType="Self.TransactionType" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Article_AspNetUsers" Association="Self.FK_Article_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Article" EntitySet="Article" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Article_Comment_Article" Association="Self.FK_Article_Comment_Article">
+            <End Role="Article" EntitySet="Article" />
+            <End Role="Article_Comment" EntitySet="Article_Comment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Article_Like_Article" Association="Self.FK_Article_Like_Article">
+            <End Role="Article" EntitySet="Article" />
+            <End Role="Article_Like" EntitySet="Article_Like" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Article_Like_AspNetUsers" Association="Self.FK_Article_Like_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Article_Like" EntitySet="Article_Like" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Article_Share_Article" Association="Self.FK_Article_Share_Article">
+            <End Role="Article" EntitySet="Article" />
+            <End Role="Article_Share" EntitySet="Article_Share" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Article_Share_AspNetUsers" Association="Self.FK_Article_Share_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Article_Share" EntitySet="Article_Share" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Article_Topic" Association="Self.FK_Article_Topic">
+            <End Role="Topic" EntitySet="Topic" />
+            <End Role="Article" EntitySet="Article" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Doctor_DoctorSpecialty" Association="Self.FK_Doctor_DoctorSpecialty">
+            <End Role="DoctorSpecialty" EntitySet="DoctorSpecialty" />
+            <End Role="Doctor" EntitySet="Doctor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FamilyMember_AspNetUsers" Association="Self.FK_FamilyMember_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="FamilyMember" EntitySet="FamilyMember" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FavoriteArticle_AspNetUsers" Association="Self.FK_FavoriteArticle_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="FavoriteArticle" EntitySet="FavoriteArticle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FavoriteDoctor_AspNetUsers" Association="Self.FK_FavoriteDoctor_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="FavoriteDoctor" EntitySet="FavoriteDoctor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HealthDiary_AspNetUsers" Association="Self.FK_HealthDiary_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="HealthDiary" EntitySet="HealthDiary" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HealthDiary_HealthDiaryType" Association="Self.FK_HealthDiary_HealthDiaryType">
+            <End Role="HealthDiaryType" EntitySet="HealthDiaryType" />
+            <End Role="HealthDiary" EntitySet="HealthDiary" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HealthDiaryAttachment_HealthDiary" Association="Self.FK_HealthDiaryAttachment_HealthDiary">
+            <End Role="HealthDiary" EntitySet="HealthDiary" />
+            <End Role="HealthDiaryAttachment" EntitySet="HealthDiaryAttachment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Label_LabelGroup" Association="Self.FK_Label_LabelGroup">
+            <End Role="LabelGroup" EntitySet="LabelGroup" />
+            <End Role="Label" EntitySet="Label" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Label_Language" Association="Self.FK_Label_Language">
+            <End Role="Language" EntitySet="Language" />
+            <End Role="Label" EntitySet="Label" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Log_TransactionType" Association="Self.FK_Log_TransactionType">
+            <End Role="TransactionType" EntitySet="TransactionType" />
+            <End Role="Log" EntitySet="Log" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MedicalProfile_AspNetUsers" Association="Self.FK_MedicalProfile_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="MedicalProfile" EntitySet="MedicalProfile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MedicalRecord_AspNetUsers" Association="Self.FK_MedicalRecord_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="MedicalRecord" EntitySet="MedicalRecord" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MedicalRecord_MedicalRecordType" Association="Self.FK_MedicalRecord_MedicalRecordType">
+            <End Role="MedicalRecordType" EntitySet="MedicalRecordType" />
+            <End Role="MedicalRecord" EntitySet="MedicalRecord" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MedicalRecordAttachment_MedicalRecord" Association="Self.FK_MedicalRecordAttachment_MedicalRecord">
+            <End Role="MedicalRecord" EntitySet="MedicalRecord" />
+            <End Role="MedicalRecordAttachment" EntitySet="MedicalRecordAttachment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MedicalRemiderDateTime_MedicalReminder" Association="Self.FK_MedicalRemiderDateTime_MedicalReminder">
+            <End Role="MedicalReminder" EntitySet="MedicalReminder" />
+            <End Role="MedicalRemiderDateTime" EntitySet="MedicalRemiderDateTime" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MedicalReminder_AspNetUsers" Association="Self.FK_MedicalReminder_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="MedicalReminder" EntitySet="MedicalReminder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MedicalReminderAttachment_MedicalReminder" Association="Self.FK_MedicalReminderAttachment_MedicalReminder">
+            <End Role="MedicalReminder" EntitySet="MedicalReminder" />
+            <End Role="MedicalReminderAttachment" EntitySet="MedicalReminderAttachment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MyVaccination_AspNetUsers" Association="Self.FK_MyVaccination_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="MyVaccination" EntitySet="MyVaccination" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SeededData_LabelGroup" Association="Self.FK_SeededData_LabelGroup">
+            <End Role="LabelGroup" EntitySet="LabelGroup" />
+            <End Role="SeededData" EntitySet="SeededData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SeededData_SeededDataGroup" Association="Self.FK_SeededData_SeededDataGroup">
+            <End Role="SeededDataGroup" EntitySet="SeededDataGroup" />
+            <End Role="SeededData" EntitySet="SeededData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StandardVaccination_StandardVaccinationCategory" Association="Self.FK_StandardVaccination_StandardVaccinationCategory">
+            <End Role="StandardVaccinationCategory" EntitySet="StandardVaccinationCategory" />
+            <End Role="StandardVaccination" EntitySet="StandardVaccination" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NurseNovaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="About">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+          <Property Name="CreateUserID" Type="Int64" Nullable="false" />
+          <Property Name="UpdateUserID" Type="Int64" />
+        </EntityType>
+        <EntityType Name="AppObject">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TableName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsOnMenu" Type="Boolean" Nullable="false" />
+          <Property Name="IsSortable" Type="Boolean" Nullable="false" />
+          <Property Name="IsPublishable" Type="Boolean" Nullable="false" />
+          <Property Name="IsFilterable" Type="Boolean" />
+          <Property Name="PageSize" Type="Int32" />
+          <Property Name="Priority" Type="Int32" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+          <Property Name="CreateUserID" Type="Int64" Nullable="false" />
+          <Property Name="UpdateUserID" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Article">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TopicID" Type="Int64" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Img_src" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="DatePublished" Type="DateTime" Precision="3" />
+          <Property Name="Priority" Type="Int32" />
+          <Property Name="IsPublished" Type="Boolean" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+          <Property Name="CreateUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UpdateUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_Article_AspNetUsers" FromRole="Article" ToRole="AspNetUsers" />
+          <NavigationProperty Name="Article_Comment" Relationship="Self.FK_Article_Comment_Article" FromRole="Article" ToRole="Article_Comment" />
+          <NavigationProperty Name="Article_Like" Relationship="Self.FK_Article_Like_Article" FromRole="Article" ToRole="Article_Like" />
+          <NavigationProperty Name="Article_Share" Relationship="Self.FK_Article_Share_Article" FromRole="Article" ToRole="Article_Share" />
+          <NavigationProperty Name="Topic" Relationship="Self.FK_Article_Topic" FromRole="Article" ToRole="Topic" />
+        </EntityType>
+        <EntityType Name="Article_Comment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ArticleID" Type="Int64" Nullable="false" />
+          <Property Name="DateOfComment" Type="DateTime" Precision="3" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Priority" Type="Int32" />
+          <Property Name="IsPublished" Type="Int64" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateUpdate" Type="DateTime" Precision="3" />
+          <Property Name="CreateUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UpdateUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Article" Relationship="Self.FK_Article_Comment_Article" FromRole="Article_Comment" ToRole="Article" />
+        </EntityType>
+        <EntityType Name="Article_Like">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ArticleID" Type="Int64" Nullable="false" />
+          <Property Name="UserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateOfLike" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Article" Relationship="Self.FK_Article_Like_Article" FromRole="Article_Like" ToRole="Article" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_Article_Like_AspNetUsers" FromRole="Article_Like" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="Article_Share">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ArticleID" Type="Int64" Nullable="false" />
+          <Property Name="UserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateOfShare" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Article" Relationship="Self.FK_Article_Share_Article" FromRole="Article_Share" ToRole="Article" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_Article_Share_AspNetUsers" FromRole="Article_Share" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Level" Type="Byte" Nullable="false" />
+          <Property Name="JoinDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="3" />
+          <Property Name="GenderId" Type="Int64" />
+          <NavigationProperty Name="Articles" Relationship="Self.FK_Article_AspNetUsers" FromRole="AspNetUsers" ToRole="Article" />
+          <NavigationProperty Name="Article_Like" Relationship="Self.FK_Article_Like_AspNetUsers" FromRole="AspNetUsers" ToRole="Article_Like" />
+          <NavigationProperty Name="Article_Share" Relationship="Self.FK_Article_Share_AspNetUsers" FromRole="AspNetUsers" ToRole="Article_Share" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="FamilyMembers" Relationship="Self.FK_FamilyMember_AspNetUsers" FromRole="AspNetUsers" ToRole="FamilyMember" />
+          <NavigationProperty Name="FavoriteArticles" Relationship="Self.FK_FavoriteArticle_AspNetUsers" FromRole="AspNetUsers" ToRole="FavoriteArticle" />
+          <NavigationProperty Name="FavoriteDoctors" Relationship="Self.FK_FavoriteDoctor_AspNetUsers" FromRole="AspNetUsers" ToRole="FavoriteDoctor" />
+          <NavigationProperty Name="HealthDiaries" Relationship="Self.FK_HealthDiary_AspNetUsers" FromRole="AspNetUsers" ToRole="HealthDiary" />
+          <NavigationProperty Name="MedicalProfiles" Relationship="Self.FK_MedicalProfile_AspNetUsers" FromRole="AspNetUsers" ToRole="MedicalProfile" />
+          <NavigationProperty Name="MedicalRecords" Relationship="Self.FK_MedicalRecord_AspNetUsers" FromRole="AspNetUsers" ToRole="MedicalRecord" />
+          <NavigationProperty Name="MedicalReminders" Relationship="Self.FK_MedicalReminder_AspNetUsers" FromRole="AspNetUsers" ToRole="MedicalReminder" />
+          <NavigationProperty Name="MyVaccinations" Relationship="Self.FK_MyVaccination_AspNetUsers" FromRole="AspNetUsers" ToRole="MyVaccination" />
+          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Secret" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ApplicationType" Type="Int32" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="RefreshTokenLifeTime" Type="Int32" Nullable="false" />
+          <Property Name="AllowedOrigin" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Doctor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DoctorSpecialyID" Type="Int64" Nullable="false" />
+          <Property Name="Firstname" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Lastname" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EmailAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Website" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ClinicPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CountryID" Type="Int64" Nullable="false" />
+          <Property Name="CityID" Type="Int64" Nullable="false" />
+          <Property Name="Village" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="StreetNumName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="StreetLine1" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Longitude" Type="Double" />
+          <Property Name="Lattitude" Type="Double" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="CreateUserID" Type="Int64" Nullable="false" />
+          <Property Name="UpdateUserID" Type="Int64" />
+          <NavigationProperty Name="DoctorSpecialty" Relationship="Self.FK_Doctor_DoctorSpecialty" FromRole="Doctor" ToRole="DoctorSpecialty" />
+        </EntityType>
+        <EntityType Name="DoctorSpecialty">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Priority" Type="Int32" />
+          <Property Name="IsPublished" Type="Boolean" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+          <Property Name="CreateUserID" Type="Int64" Nullable="false" />
+          <Property Name="UpdateUserID" Type="Int64" />
+          <NavigationProperty Name="Doctors" Relationship="Self.FK_Doctor_DoctorSpecialty" FromRole="DoctorSpecialty" ToRole="Doctor" />
+        </EntityType>
+        <EntityType Name="FamilyMember">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RelationshipSD" Type="Int64" Nullable="false" />
+          <Property Name="GenderSD" Type="Int64" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="3" />
+          <Property Name="BloodTypeSD" Type="Int64" />
+          <Property Name="MedicationAllergy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Priority" Type="Int32" />
+          <Property Name="IsPublished" Type="Boolean" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+          <Property Name="CreateUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UpdateUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_FamilyMember_AspNetUsers" FromRole="FamilyMember" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="FavoriteArticle">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ArticleID" Type="Int64" Nullable="false" />
+          <Property Name="DateOfPreference" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_FavoriteArticle_AspNetUsers" FromRole="FavoriteArticle" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="FavoriteDoctor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DoctorID" Type="Int64" Nullable="false" />
+          <Property Name="DateOfPreference" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_FavoriteDoctor_AspNetUsers" FromRole="FavoriteDoctor" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="HealthDiary">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FamilyMemberID" Type="Int64" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HealthDiaryTypeID" Type="Int64" />
+          <Property Name="Priority" Type="Int32" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+          <Property Name="CreateUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UpdateUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_HealthDiary_AspNetUsers" FromRole="HealthDiary" ToRole="AspNetUsers" />
+          <NavigationProperty Name="HealthDiaryType" Relationship="Self.FK_HealthDiary_HealthDiaryType" FromRole="HealthDiary" ToRole="HealthDiaryType" />
+          <NavigationProperty Name="HealthDiaryAttachments" Relationship="Self.FK_HealthDiaryAttachment_HealthDiary" FromRole="HealthDiary" ToRole="HealthDiaryAttachment" />
+        </EntityType>
+        <EntityType Name="HealthDiaryAttachment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HealthDiaryID" Type="Int64" Nullable="false" />
+          <Property Name="File_src" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FileType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Priority" Type="Int32" />
+          <Property Name="IsPublished" Type="Boolean" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="HealthDiary" Relationship="Self.FK_HealthDiaryAttachment_HealthDiary" FromRole="HealthDiaryAttachment" ToRole="HealthDiary" />
+        </EntityType>
+        <EntityType Name="HealthDiaryType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Priority" Type="Int32" />
+          <Property Name="IsPublished" Type="Boolean" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+          <Property Name="CreateUserID" Type="Int64" Nullable="false" />
+          <Property Name="UpdateUserID" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="HealthDiaries" Relationship="Self.FK_HealthDiary_HealthDiaryType" FromRole="HealthDiaryType" ToRole="HealthDiary" />
+        </EntityType>
+        <EntityType Name="Label">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LabelGroupID" Type="Int64" Nullable="false" />
+          <Property Name="Label1" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LanguageID" Type="Int64" />
+          <NavigationProperty Name="LabelGroup" Relationship="Self.FK_Label_LabelGroup" FromRole="Label" ToRole="LabelGroup" />
+          <NavigationProperty Name="Language" Relationship="Self.FK_Label_Language" FromRole="Label" ToRole="Language" />
+        </EntityType>
+        <EntityType Name="LabelGroup">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Labels" Relationship="Self.FK_Label_LabelGroup" FromRole="LabelGroup" ToRole="Label" />
+          <NavigationProperty Name="SeededDatas" Relationship="NurseNovaModel.FK_SeededData_LabelGroup" FromRole="LabelGroup" ToRole="SeededData" />
+        </EntityType>
+        <EntityType Name="Language">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Labels" Relationship="Self.FK_Label_Language" FromRole="Language" ToRole="Label" />
+        </EntityType>
+        <EntityType Name="Log">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Guid" Nullable="false" />
+          <Property Name="ObjectID" Type="Int64" Nullable="false" />
+          <Property Name="RecordID" Type="Int64" />
+          <Property Name="TransactionTypeID" Type="Int64" />
+          <Property Name="Metadata" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateTransaction" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="TransactionType" Relationship="Self.FK_Log_TransactionType" FromRole="Log" ToRole="TransactionType" />
+        </EntityType>
+        <EntityType Name="MedicalProfile">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GenderSD" Type="Int64" />
+          <Property Name="MaritalStatusSD" Type="Int64" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="BloodTypeSD" Type="Int64" />
+          <Property Name="WeightSD" Type="Int64" />
+          <Property Name="HeightSD" Type="Int64" />
+          <Property Name="Occupation" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="HaveInsurance" Type="Boolean" />
+          <Property Name="HaveNSSF" Type="Boolean" />
+          <Property Name="Smoker" Type="Boolean" />
+          <Property Name="HaveChildren" Type="Boolean" />
+          <Property Name="CaffeineDrinker" Type="Boolean" />
+          <Property Name="CaffeinePerDay" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="TakeMedication" Type="Boolean" />
+          <Property Name="HavePreviousSurgeries" Type="Boolean" />
+          <Property Name="HaveMedicationAllergy" Type="Boolean" />
+          <Property Name="HaveOtherAllergy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FamilyMedicalHistory" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+          <Property Name="CreateUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UpdateUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_MedicalProfile_AspNetUsers" FromRole="MedicalProfile" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="MedicalRecord">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FamilyMemberID" Type="Int64" />
+          <Property Name="MedicalRecordTypeID" Type="Int64" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Priority" Type="Int32" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+          <Property Name="CreateUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UpdateUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_MedicalRecord_AspNetUsers" FromRole="MedicalRecord" ToRole="AspNetUsers" />
+          <NavigationProperty Name="MedicalRecordType" Relationship="Self.FK_MedicalRecord_MedicalRecordType" FromRole="MedicalRecord" ToRole="MedicalRecordType" />
+          <NavigationProperty Name="MedicalRecordAttachments" Relationship="Self.FK_MedicalRecordAttachment_MedicalRecord" FromRole="MedicalRecord" ToRole="MedicalRecordAttachment" />
+        </EntityType>
+        <EntityType Name="MedicalRecordAttachment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MedicalRecordID" Type="Int64" Nullable="false" />
+          <Property Name="File_src" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FileType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Priority" Type="Int32" />
+          <Property Name="IsPublished" Type="Boolean" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="MedicalRecord" Relationship="Self.FK_MedicalRecordAttachment_MedicalRecord" FromRole="MedicalRecordAttachment" ToRole="MedicalRecord" />
+        </EntityType>
+        <EntityType Name="MedicalRecordType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Priority" Type="Int32" />
+          <Property Name="IsPublished" Type="Boolean" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+          <Property Name="CreateUserID" Type="Int64" Nullable="false" />
+          <Property Name="UpdateUserID" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="MedicalRecords" Relationship="Self.FK_MedicalRecord_MedicalRecordType" FromRole="MedicalRecordType" ToRole="MedicalRecord" />
+        </EntityType>
+        <EntityType Name="MedicalRemiderDateTime">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MedicalReminderID" Type="Int64" Nullable="false" />
+          <Property Name="RemiderDate" Type="DateTime" Precision="0" />
+          <Property Name="RemiderTime" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="MedicalReminder" Relationship="Self.FK_MedicalRemiderDateTime_MedicalReminder" FromRole="MedicalRemiderDateTime" ToRole="MedicalReminder" />
+        </EntityType>
+        <EntityType Name="MedicalReminder">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FamilyMemberID" Type="Int64" />
+          <Property Name="MedicineName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="QtyDoze" Type="Int32" />
+          <Property Name="MedicineUnitID" Type="Int64" />
+          <Property Name="IsEveryday" Type="Boolean" Nullable="false" />
+          <Property Name="IsLifetime" Type="Boolean" Nullable="false" />
+          <Property Name="Priority" Type="Int32" />
+          <Property Name="IsPublished" Type="Boolean" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+          <Property Name="CreateUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UpdateUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_MedicalReminder_AspNetUsers" FromRole="MedicalReminder" ToRole="AspNetUsers" />
+          <NavigationProperty Name="MedicalRemiderDateTimes" Relationship="Self.FK_MedicalRemiderDateTime_MedicalReminder" FromRole="MedicalReminder" ToRole="MedicalRemiderDateTime" />
+          <NavigationProperty Name="MedicalReminderAttachments" Relationship="Self.FK_MedicalReminderAttachment_MedicalReminder" FromRole="MedicalReminder" ToRole="MedicalReminderAttachment" />
+        </EntityType>
+        <EntityType Name="MedicalReminderAttachment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MedicalReminderID" Type="Int64" Nullable="false" />
+          <Property Name="File_src" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FileType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Priority" Type="Int32" />
+          <Property Name="IsPublished" Type="Boolean" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="MedicalReminder" Relationship="Self.FK_MedicalReminderAttachment_MedicalReminder" FromRole="MedicalReminderAttachment" ToRole="MedicalReminder" />
+        </EntityType>
+        <EntityType Name="MyVaccination">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsStandard" Type="Int64" Nullable="false" />
+          <Property Name="StandardVaccinationID" Type="Int64" />
+          <Property Name="VaccinationDueDate" Type="DateTime" Precision="3" />
+          <Property Name="IsVaccinated" Type="Boolean" Nullable="false" />
+          <Property Name="VaccinatedDate" Type="DateTime" Precision="3" />
+          <Property Name="Priority" Type="Int32" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+          <Property Name="CreateUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_MyVaccination_AspNetUsers" FromRole="MyVaccination" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="RefreshToken">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Subject" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClientId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IssuedUtc" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ExpiresUtc" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ProtectedTicket" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Relationship">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LabelGroupID" Type="Int64" Nullable="false" />
+          <Property Name="Priority" Type="Int32" />
+          <Property Name="IsPublished" Type="Int64" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="SeededData">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Priority" Type="Int32" Nullable="false" />
+          <Property Name="SeededDataGroupID" Type="Int64" Nullable="false" />
+          <Property Name="LabelGroupID" Type="Int64" Nullable="false" />
+          <Property Name="StatusFlag" Type="Int64" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="LabelGroup" Relationship="NurseNovaModel.FK_SeededData_LabelGroup" FromRole="SeededData" ToRole="LabelGroup" />
+          <NavigationProperty Name="SeededDataGroup" Relationship="NurseNovaModel.FK_SeededData_SeededDataGroup" FromRole="SeededData" ToRole="SeededDataGroup" />
+        </EntityType>
+        <EntityType Name="SeededDataGroup">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="SeededDatas" Relationship="NurseNovaModel.FK_SeededData_SeededDataGroup" FromRole="SeededDataGroup" ToRole="SeededData" />
+        </EntityType>
+        <EntityType Name="StandardVaccination">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StandardVaccinationCategoryID" Type="Int64" Nullable="false" />
+          <Property Name="LabelGroupID" Type="Int64" Nullable="false" />
+          <Property Name="VaccinationDueDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="MinAge" Type="Int32" />
+          <Property Name="MaxAge" Type="Int32" />
+          <Property Name="Priority" Type="Int32" />
+          <Property Name="IsPublished" Type="Int64" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+          <Property Name="CreateUserID" Type="Int64" Nullable="false" />
+          <Property Name="UpdateUserID" Type="Int64" />
+          <NavigationProperty Name="StandardVaccinationCategory" Relationship="Self.FK_StandardVaccination_StandardVaccinationCategory" FromRole="StandardVaccination" ToRole="StandardVaccinationCategory" />
+        </EntityType>
+        <EntityType Name="StandardVaccinationCategory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LabeGroupID" Type="Int64" Nullable="false" />
+          <Property Name="Priority" Type="Int32" />
+          <Property Name="IsPublished" Type="Int64" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+          <Property Name="CreateUserID" Type="Int64" Nullable="false" />
+          <Property Name="UpdateUserID" Type="Int64" />
+          <NavigationProperty Name="StandardVaccinations" Relationship="Self.FK_StandardVaccination_StandardVaccinationCategory" FromRole="StandardVaccinationCategory" ToRole="StandardVaccination" />
+        </EntityType>
+        <EntityType Name="Topic">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Priority" Type="Int32" />
+          <Property Name="IsPublished" Type="Boolean" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+          <Property Name="CreateUserID" Type="Int64" Nullable="false" />
+          <Property Name="UpdateUserID" Type="Int64" />
+          <NavigationProperty Name="Articles" Relationship="Self.FK_Article_Topic" FromRole="Topic" ToRole="Article" />
+        </EntityType>
+        <EntityType Name="TransactionType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Priority" Type="Int32" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+          <Property Name="CreateUserID" Type="Int64" Nullable="false" />
+          <Property Name="UpdateUserID" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Logs" Relationship="Self.FK_Log_TransactionType" FromRole="TransactionType" ToRole="Log" />
+        </EntityType>
+        <Association Name="FK_Article_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="Article" Type="Self.Article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Article">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Article_Comment_Article">
+          <End Role="Article" Type="Self.Article" Multiplicity="1" />
+          <End Role="Article_Comment" Type="Self.Article_Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Article_Comment">
+              <PropertyRef Name="ArticleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Article_Like_Article">
+          <End Role="Article" Type="Self.Article" Multiplicity="1" />
+          <End Role="Article_Like" Type="Self.Article_Like" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Article_Like">
+              <PropertyRef Name="ArticleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Article_Share_Article">
+          <End Role="Article" Type="Self.Article" Multiplicity="1" />
+          <End Role="Article_Share" Type="Self.Article_Share" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Article_Share">
+              <PropertyRef Name="ArticleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Article_Topic">
+          <End Role="Topic" Type="Self.Topic" Multiplicity="1" />
+          <End Role="Article" Type="Self.Article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Topic">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Article">
+              <PropertyRef Name="TopicID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Article_Like_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="Article_Like" Type="Self.Article_Like" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Article_Like">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Article_Share_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="Article_Share" Type="Self.Article_Share" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Article_Share">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FamilyMember_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="FamilyMember" Type="Self.FamilyMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FamilyMember">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FavoriteArticle_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="FavoriteArticle" Type="Self.FavoriteArticle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FavoriteArticle">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FavoriteDoctor_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="FavoriteDoctor" Type="Self.FavoriteDoctor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FavoriteDoctor">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HealthDiary_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="HealthDiary" Type="Self.HealthDiary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HealthDiary">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MedicalProfile_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="MedicalProfile" Type="Self.MedicalProfile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MedicalProfile">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MedicalRecord_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="MedicalRecord" Type="Self.MedicalRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MedicalRecord">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MedicalReminder_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="MedicalReminder" Type="Self.MedicalReminder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MedicalReminder">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MyVaccination_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="MyVaccination" Type="Self.MyVaccination" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MyVaccination">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Doctor_DoctorSpecialty">
+          <End Role="DoctorSpecialty" Type="Self.DoctorSpecialty" Multiplicity="1" />
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DoctorSpecialty">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Doctor">
+              <PropertyRef Name="DoctorSpecialyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HealthDiary_HealthDiaryType">
+          <End Role="HealthDiaryType" Type="Self.HealthDiaryType" Multiplicity="0..1" />
+          <End Role="HealthDiary" Type="Self.HealthDiary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HealthDiaryType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="HealthDiary">
+              <PropertyRef Name="HealthDiaryTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HealthDiaryAttachment_HealthDiary">
+          <End Role="HealthDiary" Type="Self.HealthDiary" Multiplicity="1" />
+          <End Role="HealthDiaryAttachment" Type="Self.HealthDiaryAttachment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HealthDiary">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="HealthDiaryAttachment">
+              <PropertyRef Name="HealthDiaryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Label_LabelGroup">
+          <End Role="LabelGroup" Type="Self.LabelGroup" Multiplicity="1" />
+          <End Role="Label" Type="Self.Label" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LabelGroup">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Label">
+              <PropertyRef Name="LabelGroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Label_Language">
+          <End Role="Language" Type="Self.Language" Multiplicity="0..1" />
+          <End Role="Label" Type="Self.Label" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Label">
+              <PropertyRef Name="LanguageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Log_TransactionType">
+          <End Role="TransactionType" Type="Self.TransactionType" Multiplicity="0..1" />
+          <End Role="Log" Type="Self.Log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TransactionType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Log">
+              <PropertyRef Name="TransactionTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MedicalRecord_MedicalRecordType">
+          <End Role="MedicalRecordType" Type="Self.MedicalRecordType" Multiplicity="0..1" />
+          <End Role="MedicalRecord" Type="Self.MedicalRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MedicalRecordType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MedicalRecord">
+              <PropertyRef Name="MedicalRecordTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MedicalRecordAttachment_MedicalRecord">
+          <End Role="MedicalRecord" Type="Self.MedicalRecord" Multiplicity="1" />
+          <End Role="MedicalRecordAttachment" Type="Self.MedicalRecordAttachment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MedicalRecord">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MedicalRecordAttachment">
+              <PropertyRef Name="MedicalRecordID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MedicalRemiderDateTime_MedicalReminder">
+          <End Role="MedicalReminder" Type="Self.MedicalReminder" Multiplicity="1" />
+          <End Role="MedicalRemiderDateTime" Type="Self.MedicalRemiderDateTime" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MedicalReminder">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MedicalRemiderDateTime">
+              <PropertyRef Name="MedicalReminderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MedicalReminderAttachment_MedicalReminder">
+          <End Role="MedicalReminder" Type="Self.MedicalReminder" Multiplicity="1" />
+          <End Role="MedicalReminderAttachment" Type="Self.MedicalReminderAttachment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MedicalReminder">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MedicalReminderAttachment">
+              <PropertyRef Name="MedicalReminderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StandardVaccination_StandardVaccinationCategory">
+          <End Role="StandardVaccinationCategory" Type="Self.StandardVaccinationCategory" Multiplicity="1" />
+          <End Role="StandardVaccination" Type="Self.StandardVaccination" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StandardVaccinationCategory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="StandardVaccination">
+              <PropertyRef Name="StandardVaccinationCategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="NurseNovaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+          <EntitySet Name="Abouts" EntityType="Self.About" />
+          <EntitySet Name="AppObjects" EntityType="Self.AppObject" />
+          <EntitySet Name="Articles" EntityType="Self.Article" />
+          <EntitySet Name="Article_Comment" EntityType="Self.Article_Comment" />
+          <EntitySet Name="Article_Like" EntityType="Self.Article_Like" />
+          <EntitySet Name="Article_Share" EntityType="Self.Article_Share" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+          <EntitySet Name="Clients" EntityType="Self.Client" />
+          <EntitySet Name="Doctors" EntityType="Self.Doctor" />
+          <EntitySet Name="DoctorSpecialties" EntityType="Self.DoctorSpecialty" />
+          <EntitySet Name="FamilyMembers" EntityType="Self.FamilyMember" />
+          <EntitySet Name="FavoriteArticles" EntityType="Self.FavoriteArticle" />
+          <EntitySet Name="FavoriteDoctors" EntityType="Self.FavoriteDoctor" />
+          <EntitySet Name="HealthDiaries" EntityType="Self.HealthDiary" />
+          <EntitySet Name="HealthDiaryAttachments" EntityType="Self.HealthDiaryAttachment" />
+          <EntitySet Name="HealthDiaryTypes" EntityType="Self.HealthDiaryType" />
+          <EntitySet Name="Labels" EntityType="Self.Label" />
+          <EntitySet Name="LabelGroups" EntityType="Self.LabelGroup" />
+          <EntitySet Name="Languages" EntityType="Self.Language" />
+          <EntitySet Name="Logs" EntityType="Self.Log" />
+          <EntitySet Name="MedicalProfiles" EntityType="Self.MedicalProfile" />
+          <EntitySet Name="MedicalRecords" EntityType="Self.MedicalRecord" />
+          <EntitySet Name="MedicalRecordAttachments" EntityType="Self.MedicalRecordAttachment" />
+          <EntitySet Name="MedicalRecordTypes" EntityType="Self.MedicalRecordType" />
+          <EntitySet Name="MedicalRemiderDateTimes" EntityType="Self.MedicalRemiderDateTime" />
+          <EntitySet Name="MedicalReminders" EntityType="Self.MedicalReminder" />
+          <EntitySet Name="MedicalReminderAttachments" EntityType="Self.MedicalReminderAttachment" />
+          <EntitySet Name="MyVaccinations" EntityType="Self.MyVaccination" />
+          <EntitySet Name="RefreshTokens" EntityType="Self.RefreshToken" />
+          <EntitySet Name="Relationships" EntityType="Self.Relationship" />
+          <EntitySet Name="SeededDatas" EntityType="Self.SeededData" />
+          <EntitySet Name="SeededDataGroups" EntityType="Self.SeededDataGroup" />
+          <EntitySet Name="StandardVaccinations" EntityType="Self.StandardVaccination" />
+          <EntitySet Name="StandardVaccinationCategories" EntityType="Self.StandardVaccinationCategory" />
+          <EntitySet Name="Topics" EntityType="Self.Topic" />
+          <EntitySet Name="TransactionTypes" EntityType="Self.TransactionType" />
+          <AssociationSet Name="FK_Article_AspNetUsers" Association="Self.FK_Article_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Article" EntitySet="Articles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Article_Comment_Article" Association="Self.FK_Article_Comment_Article">
+            <End Role="Article" EntitySet="Articles" />
+            <End Role="Article_Comment" EntitySet="Article_Comment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Article_Like_Article" Association="Self.FK_Article_Like_Article">
+            <End Role="Article" EntitySet="Articles" />
+            <End Role="Article_Like" EntitySet="Article_Like" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Article_Share_Article" Association="Self.FK_Article_Share_Article">
+            <End Role="Article" EntitySet="Articles" />
+            <End Role="Article_Share" EntitySet="Article_Share" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Article_Topic" Association="Self.FK_Article_Topic">
+            <End Role="Topic" EntitySet="Topics" />
+            <End Role="Article" EntitySet="Articles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Article_Like_AspNetUsers" Association="Self.FK_Article_Like_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Article_Like" EntitySet="Article_Like" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Article_Share_AspNetUsers" Association="Self.FK_Article_Share_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Article_Share" EntitySet="Article_Share" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FamilyMember_AspNetUsers" Association="Self.FK_FamilyMember_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="FamilyMember" EntitySet="FamilyMembers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FavoriteArticle_AspNetUsers" Association="Self.FK_FavoriteArticle_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="FavoriteArticle" EntitySet="FavoriteArticles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FavoriteDoctor_AspNetUsers" Association="Self.FK_FavoriteDoctor_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="FavoriteDoctor" EntitySet="FavoriteDoctors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HealthDiary_AspNetUsers" Association="Self.FK_HealthDiary_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="HealthDiary" EntitySet="HealthDiaries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MedicalProfile_AspNetUsers" Association="Self.FK_MedicalProfile_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="MedicalProfile" EntitySet="MedicalProfiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MedicalRecord_AspNetUsers" Association="Self.FK_MedicalRecord_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="MedicalRecord" EntitySet="MedicalRecords" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MedicalReminder_AspNetUsers" Association="Self.FK_MedicalReminder_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="MedicalReminder" EntitySet="MedicalReminders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MyVaccination_AspNetUsers" Association="Self.FK_MyVaccination_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="MyVaccination" EntitySet="MyVaccinations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Doctor_DoctorSpecialty" Association="Self.FK_Doctor_DoctorSpecialty">
+            <End Role="DoctorSpecialty" EntitySet="DoctorSpecialties" />
+            <End Role="Doctor" EntitySet="Doctors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HealthDiary_HealthDiaryType" Association="Self.FK_HealthDiary_HealthDiaryType">
+            <End Role="HealthDiaryType" EntitySet="HealthDiaryTypes" />
+            <End Role="HealthDiary" EntitySet="HealthDiaries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HealthDiaryAttachment_HealthDiary" Association="Self.FK_HealthDiaryAttachment_HealthDiary">
+            <End Role="HealthDiary" EntitySet="HealthDiaries" />
+            <End Role="HealthDiaryAttachment" EntitySet="HealthDiaryAttachments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Label_LabelGroup" Association="Self.FK_Label_LabelGroup">
+            <End Role="LabelGroup" EntitySet="LabelGroups" />
+            <End Role="Label" EntitySet="Labels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Label_Language" Association="Self.FK_Label_Language">
+            <End Role="Language" EntitySet="Languages" />
+            <End Role="Label" EntitySet="Labels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Log_TransactionType" Association="Self.FK_Log_TransactionType">
+            <End Role="TransactionType" EntitySet="TransactionTypes" />
+            <End Role="Log" EntitySet="Logs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MedicalRecord_MedicalRecordType" Association="Self.FK_MedicalRecord_MedicalRecordType">
+            <End Role="MedicalRecordType" EntitySet="MedicalRecordTypes" />
+            <End Role="MedicalRecord" EntitySet="MedicalRecords" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MedicalRecordAttachment_MedicalRecord" Association="Self.FK_MedicalRecordAttachment_MedicalRecord">
+            <End Role="MedicalRecord" EntitySet="MedicalRecords" />
+            <End Role="MedicalRecordAttachment" EntitySet="MedicalRecordAttachments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MedicalRemiderDateTime_MedicalReminder" Association="Self.FK_MedicalRemiderDateTime_MedicalReminder">
+            <End Role="MedicalReminder" EntitySet="MedicalReminders" />
+            <End Role="MedicalRemiderDateTime" EntitySet="MedicalRemiderDateTimes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MedicalReminderAttachment_MedicalReminder" Association="Self.FK_MedicalReminderAttachment_MedicalReminder">
+            <End Role="MedicalReminder" EntitySet="MedicalReminders" />
+            <End Role="MedicalReminderAttachment" EntitySet="MedicalReminderAttachments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StandardVaccination_StandardVaccinationCategory" Association="Self.FK_StandardVaccination_StandardVaccinationCategory">
+            <End Role="StandardVaccinationCategory" EntitySet="StandardVaccinationCategories" />
+            <End Role="StandardVaccination" EntitySet="StandardVaccinations" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SeededData_LabelGroup" Association="NurseNovaModel.FK_SeededData_LabelGroup">
+            <End Role="LabelGroup" EntitySet="LabelGroups" />
+            <End Role="SeededData" EntitySet="SeededDatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SeededData_SeededDataGroup" Association="NurseNovaModel.FK_SeededData_SeededDataGroup">
+            <End Role="SeededDataGroup" EntitySet="SeededDataGroups" />
+            <End Role="SeededData" EntitySet="SeededDatas" />
+          </AssociationSet>
+        </EntityContainer>
+        <Association Name="FK_SeededData_LabelGroup">
+          <End Type="NurseNovaModel.LabelGroup" Role="LabelGroup" Multiplicity="1" />
+          <End Type="NurseNovaModel.SeededData" Role="SeededData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LabelGroup">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SeededData">
+              <PropertyRef Name="LabelGroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SeededData_SeededDataGroup">
+          <End Type="NurseNovaModel.SeededDataGroup" Role="SeededDataGroup" Multiplicity="1" />
+          <End Type="NurseNovaModel.SeededData" Role="SeededData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SeededDataGroup">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SeededData">
+              <PropertyRef Name="SeededDataGroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="NurseNovaModelStoreContainer" CdmEntityContainer="NurseNovaEntities">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="NurseNovaModel.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Abouts">
+            <EntityTypeMapping TypeName="NurseNovaModel.About">
+              <MappingFragment StoreEntitySet="About">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+                <ScalarProperty Name="CreateUserID" ColumnName="CreateUserID" />
+                <ScalarProperty Name="UpdateUserID" ColumnName="UpdateUserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AppObjects">
+            <EntityTypeMapping TypeName="NurseNovaModel.AppObject">
+              <MappingFragment StoreEntitySet="AppObject">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="TableName" ColumnName="TableName" />
+                <ScalarProperty Name="IsOnMenu" ColumnName="IsOnMenu" />
+                <ScalarProperty Name="IsSortable" ColumnName="IsSortable" />
+                <ScalarProperty Name="IsPublishable" ColumnName="IsPublishable" />
+                <ScalarProperty Name="IsFilterable" ColumnName="IsFilterable" />
+                <ScalarProperty Name="PageSize" ColumnName="PageSize" />
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+                <ScalarProperty Name="CreateUserID" ColumnName="CreateUserID" />
+                <ScalarProperty Name="UpdateUserID" ColumnName="UpdateUserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Articles">
+            <EntityTypeMapping TypeName="NurseNovaModel.Article">
+              <MappingFragment StoreEntitySet="Article">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="TopicID" ColumnName="TopicID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Img_src" ColumnName="Img_src" />
+                <ScalarProperty Name="DatePublished" ColumnName="DatePublished" />
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+                <ScalarProperty Name="CreateUserID" ColumnName="CreateUserID" />
+                <ScalarProperty Name="UpdateUserID" ColumnName="UpdateUserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Article_Comment">
+            <EntityTypeMapping TypeName="NurseNovaModel.Article_Comment">
+              <MappingFragment StoreEntitySet="Article_Comment">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ArticleID" ColumnName="ArticleID" />
+                <ScalarProperty Name="DateOfComment" ColumnName="DateOfComment" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateUpdate" ColumnName="DateUpdate" />
+                <ScalarProperty Name="CreateUserID" ColumnName="CreateUserID" />
+                <ScalarProperty Name="UpdateUserID" ColumnName="UpdateUserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Article_Like">
+            <EntityTypeMapping TypeName="NurseNovaModel.Article_Like">
+              <MappingFragment StoreEntitySet="Article_Like">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ArticleID" ColumnName="ArticleID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="DateOfLike" ColumnName="DateOfLike" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Article_Share">
+            <EntityTypeMapping TypeName="NurseNovaModel.Article_Share">
+              <MappingFragment StoreEntitySet="Article_Share">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ArticleID" ColumnName="ArticleID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="DateOfShare" ColumnName="DateOfShare" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="NurseNovaModel.AspNetRole">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="NurseNovaModel.AspNetUserClaim">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="NurseNovaModel.AspNetUserLogin">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="NurseNovaModel.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="JoinDate" ColumnName="JoinDate" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="GenderId" ColumnName="GenderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="NurseNovaModel.Client">
+              <MappingFragment StoreEntitySet="Clients">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Secret" ColumnName="Secret" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ApplicationType" ColumnName="ApplicationType" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="RefreshTokenLifeTime" ColumnName="RefreshTokenLifeTime" />
+                <ScalarProperty Name="AllowedOrigin" ColumnName="AllowedOrigin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Doctors">
+            <EntityTypeMapping TypeName="NurseNovaModel.Doctor">
+              <MappingFragment StoreEntitySet="Doctor">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DoctorSpecialyID" ColumnName="DoctorSpecialyID" />
+                <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+                <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="ClinicPhone" ColumnName="ClinicPhone" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="Village" ColumnName="Village" />
+                <ScalarProperty Name="StreetNumName" ColumnName="StreetNumName" />
+                <ScalarProperty Name="StreetLine1" ColumnName="StreetLine1" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Lattitude" ColumnName="Lattitude" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="CreateUserID" ColumnName="CreateUserID" />
+                <ScalarProperty Name="UpdateUserID" ColumnName="UpdateUserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DoctorSpecialties">
+            <EntityTypeMapping TypeName="NurseNovaModel.DoctorSpecialty">
+              <MappingFragment StoreEntitySet="DoctorSpecialty">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+                <ScalarProperty Name="CreateUserID" ColumnName="CreateUserID" />
+                <ScalarProperty Name="UpdateUserID" ColumnName="UpdateUserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FamilyMembers">
+            <EntityTypeMapping TypeName="NurseNovaModel.FamilyMember">
+              <MappingFragment StoreEntitySet="FamilyMember">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="RelationshipSD" ColumnName="RelationshipSD" />
+                <ScalarProperty Name="GenderSD" ColumnName="GenderSD" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="BloodTypeSD" ColumnName="BloodTypeSD" />
+                <ScalarProperty Name="MedicationAllergy" ColumnName="MedicationAllergy" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+                <ScalarProperty Name="CreateUserID" ColumnName="CreateUserID" />
+                <ScalarProperty Name="UpdateUserID" ColumnName="UpdateUserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FavoriteArticles">
+            <EntityTypeMapping TypeName="NurseNovaModel.FavoriteArticle">
+              <MappingFragment StoreEntitySet="FavoriteArticle">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ArticleID" ColumnName="ArticleID" />
+                <ScalarProperty Name="DateOfPreference" ColumnName="DateOfPreference" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FavoriteDoctors">
+            <EntityTypeMapping TypeName="NurseNovaModel.FavoriteDoctor">
+              <MappingFragment StoreEntitySet="FavoriteDoctor">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="DoctorID" ColumnName="DoctorID" />
+                <ScalarProperty Name="DateOfPreference" ColumnName="DateOfPreference" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HealthDiaries">
+            <EntityTypeMapping TypeName="NurseNovaModel.HealthDiary">
+              <MappingFragment StoreEntitySet="HealthDiary">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="FamilyMemberID" ColumnName="FamilyMemberID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="HealthDiaryTypeID" ColumnName="HealthDiaryTypeID" />
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+                <ScalarProperty Name="CreateUserID" ColumnName="CreateUserID" />
+                <ScalarProperty Name="UpdateUserID" ColumnName="UpdateUserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HealthDiaryAttachments">
+            <EntityTypeMapping TypeName="NurseNovaModel.HealthDiaryAttachment">
+              <MappingFragment StoreEntitySet="HealthDiaryAttachment">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="HealthDiaryID" ColumnName="HealthDiaryID" />
+                <ScalarProperty Name="File_src" ColumnName="File_src" />
+                <ScalarProperty Name="FileType" ColumnName="FileType" />
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HealthDiaryTypes">
+            <EntityTypeMapping TypeName="NurseNovaModel.HealthDiaryType">
+              <MappingFragment StoreEntitySet="HealthDiaryType">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+                <ScalarProperty Name="CreateUserID" ColumnName="CreateUserID" />
+                <ScalarProperty Name="UpdateUserID" ColumnName="UpdateUserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Labels">
+            <EntityTypeMapping TypeName="NurseNovaModel.Label">
+              <MappingFragment StoreEntitySet="Label">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="LabelGroupID" ColumnName="LabelGroupID" />
+                <ScalarProperty Name="Label1" ColumnName="Label" />
+                <ScalarProperty Name="LanguageID" ColumnName="LanguageID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LabelGroups">
+            <EntityTypeMapping TypeName="NurseNovaModel.LabelGroup">
+              <MappingFragment StoreEntitySet="LabelGroup">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Languages">
+            <EntityTypeMapping TypeName="NurseNovaModel.Language">
+              <MappingFragment StoreEntitySet="Language">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Logs">
+            <EntityTypeMapping TypeName="NurseNovaModel.Log">
+              <MappingFragment StoreEntitySet="Log">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ObjectID" ColumnName="ObjectID" />
+                <ScalarProperty Name="RecordID" ColumnName="RecordID" />
+                <ScalarProperty Name="TransactionTypeID" ColumnName="TransactionTypeID" />
+                <ScalarProperty Name="Metadata" ColumnName="Metadata" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="DateTransaction" ColumnName="DateTransaction" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MedicalProfiles">
+            <EntityTypeMapping TypeName="NurseNovaModel.MedicalProfile">
+              <MappingFragment StoreEntitySet="MedicalProfile">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="GenderSD" ColumnName="GenderSD" />
+                <ScalarProperty Name="MaritalStatusSD" ColumnName="MaritalStatusSD" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="BloodTypeSD" ColumnName="BloodTypeSD" />
+                <ScalarProperty Name="WeightSD" ColumnName="WeightSD" />
+                <ScalarProperty Name="HeightSD" ColumnName="HeightSD" />
+                <ScalarProperty Name="Occupation" ColumnName="Occupation" />
+                <ScalarProperty Name="HaveInsurance" ColumnName="HaveInsurance" />
+                <ScalarProperty Name="HaveNSSF" ColumnName="HaveNSSF" />
+                <ScalarProperty Name="Smoker" ColumnName="Smoker" />
+                <ScalarProperty Name="HaveChildren" ColumnName="HaveChildren" />
+                <ScalarProperty Name="CaffeineDrinker" ColumnName="CaffeineDrinker" />
+                <ScalarProperty Name="CaffeinePerDay" ColumnName="CaffeinePerDay" />
+                <ScalarProperty Name="TakeMedication" ColumnName="TakeMedication" />
+                <ScalarProperty Name="HavePreviousSurgeries" ColumnName="HavePreviousSurgeries" />
+                <ScalarProperty Name="HaveMedicationAllergy" ColumnName="HaveMedicationAllergy" />
+                <ScalarProperty Name="HaveOtherAllergy" ColumnName="HaveOtherAllergy" />
+                <ScalarProperty Name="FamilyMedicalHistory" ColumnName="FamilyMedicalHistory" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+                <ScalarProperty Name="CreateUserID" ColumnName="CreateUserID" />
+                <ScalarProperty Name="UpdateUserID" ColumnName="UpdateUserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MedicalRecords">
+            <EntityTypeMapping TypeName="NurseNovaModel.MedicalRecord">
+              <MappingFragment StoreEntitySet="MedicalRecord">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="FamilyMemberID" ColumnName="FamilyMemberID" />
+                <ScalarProperty Name="MedicalRecordTypeID" ColumnName="MedicalRecordTypeID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+                <ScalarProperty Name="CreateUserID" ColumnName="CreateUserID" />
+                <ScalarProperty Name="UpdateUserID" ColumnName="UpdateUserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MedicalRecordAttachments">
+            <EntityTypeMapping TypeName="NurseNovaModel.MedicalRecordAttachment">
+              <MappingFragment StoreEntitySet="MedicalRecordAttachment">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MedicalRecordID" ColumnName="MedicalRecordID" />
+                <ScalarProperty Name="File_src" ColumnName="File_src" />
+                <ScalarProperty Name="FileType" ColumnName="FileType" />
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MedicalRecordTypes">
+            <EntityTypeMapping TypeName="NurseNovaModel.MedicalRecordType">
+              <MappingFragment StoreEntitySet="MedicalRecordType">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+                <ScalarProperty Name="CreateUserID" ColumnName="CreateUserID" />
+                <ScalarProperty Name="UpdateUserID" ColumnName="UpdateUserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MedicalRemiderDateTimes">
+            <EntityTypeMapping TypeName="NurseNovaModel.MedicalRemiderDateTime">
+              <MappingFragment StoreEntitySet="MedicalRemiderDateTime">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MedicalReminderID" ColumnName="MedicalReminderID" />
+                <ScalarProperty Name="RemiderDate" ColumnName="RemiderDate" />
+                <ScalarProperty Name="RemiderTime" ColumnName="RemiderTime" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MedicalReminders">
+            <EntityTypeMapping TypeName="NurseNovaModel.MedicalReminder">
+              <MappingFragment StoreEntitySet="MedicalReminder">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="FamilyMemberID" ColumnName="FamilyMemberID" />
+                <ScalarProperty Name="MedicineName" ColumnName="MedicineName" />
+                <ScalarProperty Name="QtyDoze" ColumnName="QtyDoze" />
+                <ScalarProperty Name="MedicineUnitID" ColumnName="MedicineUnitID" />
+                <ScalarProperty Name="IsEveryday" ColumnName="IsEveryday" />
+                <ScalarProperty Name="IsLifetime" ColumnName="IsLifetime" />
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+                <ScalarProperty Name="CreateUserID" ColumnName="CreateUserID" />
+                <ScalarProperty Name="UpdateUserID" ColumnName="UpdateUserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MedicalReminderAttachments">
+            <EntityTypeMapping TypeName="NurseNovaModel.MedicalReminderAttachment">
+              <MappingFragment StoreEntitySet="MedicalReminderAttachment">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MedicalReminderID" ColumnName="MedicalReminderID" />
+                <ScalarProperty Name="File_src" ColumnName="File_src" />
+                <ScalarProperty Name="FileType" ColumnName="FileType" />
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MyVaccinations">
+            <EntityTypeMapping TypeName="NurseNovaModel.MyVaccination">
+              <MappingFragment StoreEntitySet="MyVaccination">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsStandard" ColumnName="IsStandard" />
+                <ScalarProperty Name="StandardVaccinationID" ColumnName="StandardVaccinationID" />
+                <ScalarProperty Name="VaccinationDueDate" ColumnName="VaccinationDueDate" />
+                <ScalarProperty Name="IsVaccinated" ColumnName="IsVaccinated" />
+                <ScalarProperty Name="VaccinatedDate" ColumnName="VaccinatedDate" />
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+                <ScalarProperty Name="CreateUserID" ColumnName="CreateUserID" />
+                <ScalarProperty Name="UpdateUserID" ColumnName="UpdateUserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RefreshTokens">
+            <EntityTypeMapping TypeName="NurseNovaModel.RefreshToken">
+              <MappingFragment StoreEntitySet="RefreshTokens">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="IssuedUtc" ColumnName="IssuedUtc" />
+                <ScalarProperty Name="ExpiresUtc" ColumnName="ExpiresUtc" />
+                <ScalarProperty Name="ProtectedTicket" ColumnName="ProtectedTicket" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Relationships">
+            <EntityTypeMapping TypeName="NurseNovaModel.Relationship">
+              <MappingFragment StoreEntitySet="Relationship">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="LabelGroupID" ColumnName="LabelGroupID" />
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SeededDatas">
+            <EntityTypeMapping TypeName="NurseNovaModel.SeededData">
+              <MappingFragment StoreEntitySet="SeededData">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="SeededDataGroupID" ColumnName="SeededDataGroupID" />
+                <ScalarProperty Name="LabelGroupID" ColumnName="LabelGroupID" />
+                <ScalarProperty Name="StatusFlag" ColumnName="StatusFlag" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SeededDataGroups">
+            <EntityTypeMapping TypeName="NurseNovaModel.SeededDataGroup">
+              <MappingFragment StoreEntitySet="SeededDataGroup">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StandardVaccinations">
+            <EntityTypeMapping TypeName="NurseNovaModel.StandardVaccination">
+              <MappingFragment StoreEntitySet="StandardVaccination">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="StandardVaccinationCategoryID" ColumnName="StandardVaccinationCategoryID" />
+                <ScalarProperty Name="LabelGroupID" ColumnName="LabelGroupID" />
+                <ScalarProperty Name="VaccinationDueDate" ColumnName="VaccinationDueDate" />
+                <ScalarProperty Name="MinAge" ColumnName="MinAge" />
+                <ScalarProperty Name="MaxAge" ColumnName="MaxAge" />
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+                <ScalarProperty Name="CreateUserID" ColumnName="CreateUserID" />
+                <ScalarProperty Name="UpdateUserID" ColumnName="UpdateUserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StandardVaccinationCategories">
+            <EntityTypeMapping TypeName="NurseNovaModel.StandardVaccinationCategory">
+              <MappingFragment StoreEntitySet="StandardVaccinationCategory">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="LabeGroupID" ColumnName="LabeGroupID" />
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+                <ScalarProperty Name="CreateUserID" ColumnName="CreateUserID" />
+                <ScalarProperty Name="UpdateUserID" ColumnName="UpdateUserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Topics">
+            <EntityTypeMapping TypeName="NurseNovaModel.Topic">
+              <MappingFragment StoreEntitySet="Topic">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+                <ScalarProperty Name="CreateUserID" ColumnName="CreateUserID" />
+                <ScalarProperty Name="UpdateUserID" ColumnName="UpdateUserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TransactionTypes">
+            <EntityTypeMapping TypeName="NurseNovaModel.TransactionType">
+              <MappingFragment StoreEntitySet="TransactionType">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+                <ScalarProperty Name="CreateUserID" ColumnName="CreateUserID" />
+                <ScalarProperty Name="UpdateUserID" ColumnName="UpdateUserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="NurseNovaModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
