@@ -16,9 +16,9 @@ namespace DataModels.Services.MedicalProfile
     {
         public GetAllMedicalProfilesOutput()
         {
-            MedicalProfiless = new List<MedicalProfileModel>();
+            MedicalProfiles = new List<MedicalProfileModel>();
         }
-        public List<MedicalProfileModel> MedicalProfiless { get; set; }
+        public List<MedicalProfileModel> MedicalProfiles { get; set; }
     }
 
     public class GetAllMedicalProfilesByUserIdInput
